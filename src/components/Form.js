@@ -1,4 +1,10 @@
 import {useReducer} from 'react';
+import React from 'react';
+
+
+
+
+
 
 const initialState ={
     firstName: {
@@ -83,7 +89,7 @@ export default () => {
 // We call the useReducer hook, passing in our reducer function and the initial state
 
     const handlefirstNameChange =(e) =>{
-        if(e.target.value.Length < 2) {
+        if(e.target.value.length < 2) {
             dispatch({
                 type: 'SET_FIRST_NAME_ERROR',
                 payload: 'First name must be at least 2 characters'
@@ -101,10 +107,10 @@ export default () => {
 }
 
 const handlelastNameChange =(e) =>{
-    if(e.target.value.Length < 2) {
+    if(e.target.value.length < 3) {
         dispatch({
             type: 'SET_LAST_NAME_ERROR',
-            payload: 'Last name must be at least 2 characters'
+            payload: 'Last name must be at least 3 characters'
         });
     }else {
         dispatch({
@@ -119,7 +125,7 @@ const handlelastNameChange =(e) =>{
     }
 
     const handleEmailChange =(e) =>{
-        if(e.target.value.Length < 8 ) {
+        if(e.target.value.length < 8 ) {
             dispatch({
                 type: 'SET_EMAIL_ERROR',
                 payload: 'Email must be at least 8 characters'
@@ -158,6 +164,7 @@ const handlelastNameChange =(e) =>{
                             onChange={(e) => handlelastNameChange(e)}
                         />
                     </label>
+                    <p>{state.lastName.error}</p>
                 </div>
                 <div>
                     <label htmlFor="email">
@@ -167,6 +174,7 @@ const handlelastNameChange =(e) =>{
                             onChange={(e) => handleEmailChange(e)}
                         />
                     </label>
+                    <p>{state.email.error}</p>
                 </div>
                 <input type="submit" value="Submit" />
 
